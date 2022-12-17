@@ -1,0 +1,20 @@
+{
+    "name": "deboshreedas/secret-handler-php",
+    "autoload": {
+        "psr-4": {
+            "Deboshreedas\\SecretHandlerPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shreya-14-may",
+            "email": "shreevlrhl@gmail.com"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.253"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

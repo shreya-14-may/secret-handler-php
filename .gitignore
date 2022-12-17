@@ -1,0 +1,4 @@
+vendor
+composer.lock
+secrets_mappings.json
+.env
