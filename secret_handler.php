@@ -5,8 +5,6 @@ use Aws\SecretsManager\SecretsManagerClient;
 
 class SecretHandler
 {
-
-    private static $obj;
     private static $client;
     private static $configs = null;
     private static $configKeys = ["secrets" => [], "env" => []];

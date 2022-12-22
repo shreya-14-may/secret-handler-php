@@ -4,7 +4,7 @@ AWS Secret Handler for PHP Applications
 
 #Load the php class
 
-#php env initialized in constructor
+#php env initialized in init
    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
    $dotenv->load();
 
@@ -14,9 +14,8 @@ AWS Secret Handler for PHP Applications
    use Aws\Exception\AwsException;
 
 #init the secrets
-   $obj = new SecretHandler();
-   $obj->init();
-   var_dump(json_encode($obj->secrets(),true))
+   $secrets = SecretHandler::secrets();
+   var_dump(json_encode($secrets,true));
 
 
 *sample mappings of key secrets file => default filepath "secrets_mappings.json"
