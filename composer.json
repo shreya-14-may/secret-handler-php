@@ -2,7 +2,7 @@
     "name": "deb/secret-handler-php",
     "autoload": {
         "psr-4": {
-            "SecretHandler\\": "./"
+            "SecretHandler\\": "src/"
         }
     },
     "license": "MIT",
