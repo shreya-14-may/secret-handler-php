@@ -1,20 +1,19 @@
 {
-    "name": "deboshreedas/secret-handler-php",
+    "name": "aws-brightchamps/secret-handler-php",
     "autoload": {
         "psr-4": {
-            "Deboshreedas\\SecretHandlerPhp\\": "src/"
+            "aws-brightchamps\\SecretHandlerPhp\\": "src/"
         }
     },
+    "license": "MIT",
     "authors": [
         {
-            "name": "shreya-14-may",
+            "name": "deboshree das",
             "email": "shreevlrhl@gmail.com"
         }
     ],
     "require": {
-        "aws/aws-sdk-php": "^3.253"
-    },
-    "require-dev": {
+        "aws/aws-sdk-php": "^3.253",
         "vlucas/phpdotenv": "^5.5"
     }
 }
