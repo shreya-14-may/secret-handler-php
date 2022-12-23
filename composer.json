@@ -1,8 +1,8 @@
 {
-    "name": "aws/secret-handler-php",
+    "name": "deb/secret-handler-php",
     "autoload": {
         "psr-4": {
-            "aws\\SecretHandlerPhp\\": "src/"
+            "deb\\SecretHandlerPhp\\": "src/"
         }
     },
     "license": "MIT",
