@@ -1,8 +1,8 @@
 {
-    "name": "aws-brightchamps/secret-handler-php",
+    "name": "aws/secret-handler-php",
     "autoload": {
         "psr-4": {
-            "aws-brightchamps\\SecretHandlerPhp\\": "src/"
+            "aws\\SecretHandlerPhp\\": "src/"
         }
     },
     "license": "MIT",
