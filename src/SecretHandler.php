@@ -2,6 +2,7 @@
 namespace SecretHandler;
 use Aws\Exception\AwsException;
 use Aws\SecretsManager\SecretsManagerClient;
+use Dotenv\Dotenv;
 
 class SecretHandler
 {
@@ -18,7 +19,7 @@ class SecretHandler
 
     private static function init()
     {
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv = Dotenv::createImmutable(__DIR__);
         $dotenv->load();
         if (is_null(SecretHandler::$configs)) {
             SecretHandler::$client = new SecretsManagerClient(["profile" => "default", "version" => "2017-10-17", "region" => "ap-south-1"]);
