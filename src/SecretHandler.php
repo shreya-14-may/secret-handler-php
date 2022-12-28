@@ -10,6 +10,7 @@ class SecretHandler
     private static $configs = null;
     private static $configKeys = ["secrets" => [], "env" => []];
     public static $filepath = "./secrets_mappings.json";
+    public static $envPathFile = "./env";
 
     public static function secrets($rootDir)
     {
@@ -17,11 +18,17 @@ class SecretHandler
         return SecretHandler::$configs;
     }
 
+    public static function get($rootDir, $secretId)
+    {
+        SecretHandler::init($rootDir);
+        return SecretHandler::$configs[$secretId];
+    }
+
     private static function init($rootDir)
     {
-        $dotenv = Dotenv::createImmutable($rootDir);
-        $dotenv->load();
+        $dotenv = Dotenv::createImmutable($rootDir . $envPathFile);
         if (is_null(SecretHandler::$configs)) {
+            $dotenv->load();
             SecretHandler::$client = new SecretsManagerClient(["profile" => "default", "version" => "2017-10-17", "region" => "ap-south-1"]);
             SecretHandler::$configKeys = ["secrets" => [], "env" => []];
             SecretHandler::initConfig();
