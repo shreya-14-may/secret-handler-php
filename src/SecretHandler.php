@@ -1,7 +1,8 @@
 <?php
-require 'vendor/autoload.php';
+namespace SecretHandler;
 use Aws\Exception\AwsException;
 use Aws\SecretsManager\SecretsManagerClient;
+use Dotenv\Dotenv;
 
 class SecretHandler
 {
@@ -9,18 +10,25 @@ class SecretHandler
     private static $configs = null;
     private static $configKeys = ["secrets" => [], "env" => []];
     public static $filepath = "./secrets_mappings.json";
+    public static $envPathFile = "./env";
 
-    public static function secrets()
+    public static function secrets($rootDir)
     {
-        SecretHandler::init();
+        SecretHandler::init($rootDir);
         return SecretHandler::$configs;
     }
 
-    private static function init()
+    public static function get($rootDir, $secretId)
     {
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
+        SecretHandler::init($rootDir);
+        return SecretHandler::$configs[$secretId];
+    }
+
+    private static function init($rootDir)
+    {
+        $dotenv = Dotenv::createImmutable($rootDir,  SecretHandler::$envPathFile);
         if (is_null(SecretHandler::$configs)) {
+            $dotenv->load();
             SecretHandler::$client = new SecretsManagerClient(["profile" => "default", "version" => "2017-10-17", "region" => "ap-south-1"]);
             SecretHandler::$configKeys = ["secrets" => [], "env" => []];
             SecretHandler::initConfig();
