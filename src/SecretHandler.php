@@ -26,7 +26,7 @@ class SecretHandler
 
     private static function init($rootDir)
     {
-        $dotenv = Dotenv::createImmutable($rootDir . SecretHandler::$envPathFile);
+        $dotenv = Dotenv::createImmutable($rootDir,  SecretHandler::$envPathFile);
         if (is_null(SecretHandler::$configs)) {
             $dotenv->load();
             SecretHandler::$client = new SecretsManagerClient(["profile" => "default", "version" => "2017-10-17", "region" => "ap-south-1"]);
